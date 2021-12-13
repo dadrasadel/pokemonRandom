@@ -37,9 +37,6 @@ class ApplicationModule {
     @Singleton
     fun provideOkHttp(logging: HttpLoggingInterceptor):OkHttpClient{
         val okHttpClient = OkHttpClient.Builder()
-        okHttpClient.connectTimeout(20, TimeUnit.SECONDS)
-        okHttpClient.readTimeout(20, TimeUnit.SECONDS)
-        okHttpClient.writeTimeout(20, TimeUnit.SECONDS)
         okHttpClient.retryOnConnectionFailure(true)
         if (BuildConfig.DEBUG) {
             okHttpClient.addInterceptor(logging)
