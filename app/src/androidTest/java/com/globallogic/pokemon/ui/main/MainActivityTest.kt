@@ -25,6 +25,7 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.not
 import org.hamcrest.Matcher
 
 
@@ -37,30 +38,16 @@ class MainActivityTest{
     @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
     @Test
-    fun changeTextWhenClickButton() {
-        // Type text and then press the button.
-        onView(withId(R.id.txtName))
-            .perform(setTextInTextView("test"))
-        onView(withId(R.id.btnGenerate)).perform(click())
-//         Check that the text was changed.
-        onView(withId(R.id.txtName)).check(matches(withText("test2")))
+    fun mainActivityIsLoaded() {
+//        then
+        onView(withId(R.id.root_layout)).check(matches(isDisplayed()))
+
     }
-    private fun setTextInTextView(value: String?): ViewAction? {
-        return object : ViewAction {
-            override fun getConstraints(): Matcher<View> {
-                return allOf(isDisplayed(), isAssignableFrom(TextView::class.java))
-                //                                            ^^^^^^^^^^^^^^^^^^^
-                // To check that the found view is TextView or it's subclass like EditText
-                // so it will work for TextView and it's descendants
-            }
-
-            override fun perform(uiController: UiController?, view: View) {
-                (view as TextView).text = value
-            }
-
-            override fun getDescription(): String {
-                return "replace text"
-            }
-        }
+    @Test
+    fun changeTextWhenClickButton() {
+        //given
+        onView(withId(R.id.btnGenerate)).perform(click())
+        //then
+        onView(withId(R.id.txtName)).check(matches(not(withText("adel"))))
     }
 }

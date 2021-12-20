@@ -34,7 +34,7 @@ android {
         develop {
             dimension "develop"
 
-            applicationIdSuffix '.develope'
+//            applicationIdSuffix '.develope'
 
         }
         production {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479003587507",
+    "project_id": "my-project-1508767381197",
+    "storage_bucket": "my-project-1508767381197.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479003587507:android:af8d8cd97dc416a45611c6",
+        "android_client_info": {
+          "package_name": "com.globallogic.pokemon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479003587507-5vmtk0ljhsrv8ir22icd55fvgajiufcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3D1RTjxjQj-BNI9b1kMlrs-OwZo6VtG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479003587507-5vmtk0ljhsrv8ir22icd55fvgajiufcp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,6 +19,9 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.bilerplatemvvm", appContext.packageName)
+        if (BuildConfig.DEBUG)
+            assertEquals("com.globallogic.pokemon.develope", appContext.packageName)
+        else
+            assertEquals("com.globallogic.pokemon", appContext.packageName)
     }
 }

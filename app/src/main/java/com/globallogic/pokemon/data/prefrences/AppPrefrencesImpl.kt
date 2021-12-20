@@ -33,20 +33,12 @@ class AppPrefrencesImpl @Inject constructor(@ApplicationContext context: Context
 
     override fun getAccessToken(): String? = mprefs?.getString("token", null)
 
-    override fun setRefreshToken(token: String) =
-        mprefs?.edit()?.putString("refresh_token", token)?.apply()
 
     override fun getIsLogin(): Boolean? = mprefs?.getBoolean("isLogin", false)
 
     override fun setIsLogin(isLogin: Boolean) =
         mprefs?.edit()?.putBoolean("isLogin", isLogin)?.apply()
 
-    override fun getInquiryId(): String? = mprefs?.getString("inquiry_id", "")
-
-    override fun setInquiryId(inquiryId: String) =
-        mprefs?.edit()?.putString("inquiry_id", inquiryId)?.apply()
-
-    override fun getRefreshToken(): String? = mprefs?.getString("refresh_token", null)
 
     override fun clearAllThing() {
         mprefs?.edit()?.clear()?.apply()

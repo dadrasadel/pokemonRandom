@@ -6,8 +6,5 @@ interface AppPrefrencesHelper {
     fun getIsLogin(): Boolean?
     fun setIsLogin(isLogin: Boolean):Unit?
     fun clearAllThing()
-    fun setRefreshToken(token: String): Unit?
-    fun getRefreshToken(): String?
-    fun setInquiryId(inquiryId: String): Unit?
-    fun getInquiryId(): String?
+
 }

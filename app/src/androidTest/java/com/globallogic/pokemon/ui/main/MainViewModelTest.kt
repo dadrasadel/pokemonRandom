@@ -1,5 +1,6 @@
 package com.globallogic.pokemon.ui.main
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.asLiveData
 import androidx.test.filters.MediumTest
 import com.androiddevs.shoppinglisttestingyt.getOrAwaitValue
@@ -19,14 +20,13 @@ import kotlin.random.Random
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-@MediumTest
 class MainViewModelTest{
 
     @get:Rule
     val hilt=HiltAndroidRule(this)
 
-//    @get:Rule
-//    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Inject
     lateinit var repository: Repository
@@ -36,17 +36,18 @@ class MainViewModelTest{
     @Before
     fun setup(){
         hilt.inject()
+//        mainViewModel=MainViewModel(repository)
     }
     /** MainViewModel Expect valid Data when call server
     * input variable:nothing
     * output variable:resultPoker
     */
     @Test
-    fun notNullResponsData()= runBlockingTest {
+    fun notNullResponseData()= runBlocking{
         //Given
             val id= Random.nextInt(0, 150)
         //when
-            val result=repository.getPokemon(id).asLiveData().getOrAwaitValue()
+            val result=repository.getPokemon(id).asLiveData().getOrAwaitValue().data
         //then
             assertNotNull(result)
     }
@@ -55,7 +56,7 @@ class MainViewModelTest{
     * output variable:result api
     */
     @Test
-    fun methodreturnSuccessData()= runBlockingTest {
+    fun methodReturnSuccessData()= runBlocking {
         //Given
             val id= Random.nextInt(0, 150)
         //when
